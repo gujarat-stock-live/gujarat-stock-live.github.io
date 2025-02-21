@@ -54,16 +54,7 @@
     <!-- TradingView Widget -->
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async></script>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-11HT8W70XZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-11HT8W70XZ');
-</script>    
+    
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
@@ -105,10 +96,29 @@
     </script>
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="styles.min.css" as="style">
+    <link rel="preload" href="fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="script.js" as="script">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" as="style">
+
+    <!-- Add to head section of all pages -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://s3.tradingview.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://s3.tradingview.com">
+
+    <!-- Critical CSS inline -->
+    <style>
+        /* Copy content from critical.css */
+    </style>
+
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" 
+          media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.min.css" media="print" onload="this.media='all'">
 </head>
 <body>
     <!-- Header Section -->
@@ -453,108 +463,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
     <!-- Bootstrap Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom JS -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let widget;
-        
-        // Initialize TradingView Widget with proper interval settings
-        function initWidget(interval = 'D', chartStyle = '1') {
-            // Remove existing widget if it exists
-            if (widget) {
-                widget.remove();
-                widget = null;
-            }
+    <script defer src="script.min.js"></script>
 
-            // Create new widget
-            widget = new TradingView.widget({
-                "width": "100%",
-                "height": 500,
-                "symbol": "BSE:GUJTLRM",
-                "interval": interval,
-                "timezone": "Asia/Kolkata",
-                "theme": "light",
-                "style": chartStyle,
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "allow_symbol_change": false,
-                "container_id": "tradingview_chart",
-                "hide_side_toolbar": false,
-                "hide_top_toolbar": false,
-                "hide_legend": false,
-                "save_image": false,
-                "studies": [
-                    "Volume@tv-basicstudies"
-                ],
-                "show_popup_button": false,
-                "popup_width": "1000",
-                "popup_height": "650",
-                "disabled_features": ["use_localstorage_for_settings"],
-                "enabled_features": ["study_templates"],
-                "supported_resolutions": ["1", "5", "15", "30", "60", "D", "W", "M"]
-            });
-        }
-
-        // Initialize default widget
-        initWidget();
-
-        // Function to change chart style
-        window.changeChartType = function(style) {
-            const styleMap = {
-                'Bars': '0',
-                'Line': '1',
-                'Hollow': '2',
-                'Heikin': '8',
-                'Candles': '1'
-            };
-            
-            const buttons = document.querySelectorAll('.chart-type');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const currentInterval = document.querySelector('button[data-interval].active')?.getAttribute('data-interval') || 'D';
-            initWidget(currentInterval, styleMap[style]);
-        };
-
-        // Function to change timeframe
-        window.changeTimeframe = function(interval) {
-            const intervalMap = {
-                '1D': 'D',
-                '1W': 'W',
-                '1M': 'M',
-                '3M': '3M',
-                '6M': '6M',
-                '1Y': '12M',
-                '5Y': '60M'
-            };
-            
-            const buttons = document.querySelectorAll('button[data-interval]');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const currentStyle = document.querySelector('.chart-type.active')?.getAttribute('data-style') || 'Candles';
-            const styleMap = {
-                'Bars': '0',
-                'Line': '1',
-                'Hollow': '2',
-                'Heikin': '8',
-                'Candles': '1'
-            };
-            
-            initWidget(intervalMap[interval], styleMap[currentStyle]);
-        };
-
-        // Update statistics periodically
-        function updateStatistics() {
-            // In a real implementation, this would fetch live data from an API
-            console.log('Updating market statistics...');
-        }
-
-        setInterval(updateStatistics, 300000); // 5 minutes
+    <!-- Load TradingView widget asynchronously -->
+    <script type="text/javascript">
+    window.addEventListener('load', function() {
+        const script = document.createElement('script');
+        script.src = 'https://s3.tradingview.com/tv.js';
+        script.async = true;
+        document.body.appendChild(script);
     });
+    </script>
+
+    <div id="cookie-consent" class="cookie-banner">
+        <p>We use cookies to improve your experience. By continuing, you agree to our use of cookies.</p>
+        <button onclick="acceptCookies()">Accept</button>
+        <button onclick="rejectCookies()">Reject</button>
+    </div>
+
+    <script>
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookie-consent').style.display = 'none';
+        // Load third-party scripts here
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookie-consent').style.display = 'none';
+    }
+
+    // Check cookie consent on page load
+    if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookie-consent').style.display = 'block';
+    }
     </script>
 </body>
 </html> 
