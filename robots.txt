@@ -1,6 +1,20 @@
 User-agent: *
 Allow: /
-Sitemap: https://gujaratstokcklive.github.io/sitemap.xml
+Disallow: /private/
+Disallow: /admin/
+Disallow: /temp/
+
+# Allow important pages
+Allow: /index.html
+Allow: /gujarat-toolroom-share.html
+Allow: /market-analysis.html
+Allow: /investment-calculator.html
+Allow: /price-alerts.html
+Allow: /about.html
+Allow: /contact.html
+
+# Sitemaps
+Sitemap: https://gujaratstocklive.github.io/sitemap.xml
 
 # Allow all bots to access everything
 Disallow: 
