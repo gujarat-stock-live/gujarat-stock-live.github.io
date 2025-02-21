@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Investment Calculator | Return Calculator for Gujarat Stocks</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free stock investment calculator for Gujarat stocks. Calculate returns, SIP investments, lumpsum gains. Best tool for BSE stock investment planning and analysis.">
+    <meta name="keywords" content="stock investment calculator, share return calculator, SIP calculator, investment return calculator, BSE stock calculator, Gujarat stock calculator, stock profit calculator, investment planning tool">
+    <meta name="author" content="Gujarat Stock Live">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Stock Investment Calculator | Investment Planning Tool">
+    <meta property="og:description" content="Calculate potential returns on your stock investments. Plan SIP, analyze returns, and make informed investment decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gujaratstocklive.github.io/investment-calculator.html">
+    
+    <!-- Favicon Tags -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Stock Investment Calculator",
+        "description": "Free calculator for stock investment returns and planning",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="Gujarat Stock Live Home">
+                Gujarat Stock Live
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-graph-up-arrow me-1"></i>Live Stock
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market-analysis.html">
+                            <i class="bi bi-bar-chart-line me-1"></i>Market Analysis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="investment-calculator.html">
+                            <i class="bi bi-calculator me-1"></i>Investment Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="price-alerts.html">
+                            <i class="bi bi-bell me-1"></i>Price Alerts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="bi bi-info-circle me-1"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="bi bi-envelope me-1"></i>Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container mt-5 pt-5">
+        <h1 class="mb-4">Investment Calculator</h1>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section mb-5">
+            <div class="row">
+                <!-- Calculator Form -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h2 class="h4 mb-0">Calculate Your Investment</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="investmentForm">
+                                <div class="mb-3">
+                                    <label for="initialInvestment" class="form-label">Initial Investment (₹)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+                                        <input type="number" class="form-control" id="initialInvestment" required min="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="monthlyInvestment" class="form-label">Monthly Investment (₹)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+                                        <input type="number" class="form-control" id="monthlyInvestment" required min="0">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="expectedReturn" class="form-label">Expected Annual Return (%)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="expectedReturn" required min="0" max="100">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="investmentPeriod" class="form-label">Investment Period (Years)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="investmentPeriod" required min="1">
+                                        <span class="input-group-text">Years</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-calculator me-2"></i>Calculate
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary ms-2">
+                                    <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Display -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h2 class="h4 mb-0">Investment Results</h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="results" class="d-none">
+                                <div class="result-item mb-4">
+                                    <h3 class="h5 text-primary">Total Investment Value</h3>
+                                    <p class="h3 mb-0" id="totalValue">₹0</p>
+                                </div>
+                                <div class="result-item mb-4">
+                                    <h3 class="h5 text-success">Total Investment Amount</h3>
+                                    <p class="h4 mb-0" id="totalInvestment">₹0</p>
+                                </div>
+                                <div class="result-item mb-4">
+                                    <h3 class="h5 text-info">Total Returns</h3>
+                                    <p class="h4 mb-0" id="totalReturns">₹0</p>
+                                </div>
+                                <div class="result-item">
+                                    <h3 class="h5 text-warning">Absolute Returns</h3>
+                                    <p class="h4 mb-0" id="absoluteReturns">0%</p>
+                                </div>
+                            </div>
+                            <div id="initialMessage" class="text-center py-4">
+                                <i class="bi bi-calculator-fill display-1 text-muted mb-3"></i>
+                                <p class="text-muted mb-0">Enter your investment details to see the results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Tips Section -->
+        <section class="investment-tips mb-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h2 class="h4 mb-0">Investment Tips</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h3 class="h5 mb-3">Long-term Investment</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Start early to benefit from compound interest
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Maintain consistency in investments
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    Diversify your investment portfolio
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="h5 mb-3">Risk Management</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="bi bi-shield-check text-primary me-2"></i>
+                                    Invest according to your risk tolerance
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-shield-check text-primary me-2"></i>
+                                    Review and rebalance periodically
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-shield-check text-primary me-2"></i>
+                                    Keep emergency funds separate
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-top py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- About Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="h5 mb-4">About Gujarat Stock Live</h3>
+                            <p class="mb-4">Your trusted platform for real-time BSE stock updates and comprehensive market analysis. Get instant access to Gujarat stock market data.</p>
+                            <div class="contact-info">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-envelope-fill me-2"></i>
+                                    <a href="mailto:uddan1711@gmail.com" class="text-decoration-none">uddan1711@gmail.com</a>
+                                </div>
+                                <div class="social-links">
+                                    <h4 class="h6 mb-3">Connect With Us</h4>
+                                    <div class="d-flex gap-2">
+                                        <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Follow us on Instagram">
+                                            <i class="bi bi-instagram"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Subscribe on YouTube">
+                                            <i class="bi bi-youtube"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Connect on LinkedIn">
+                                            <i class="bi bi-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm" aria-label="Join us on Telegram">
+                                            <i class="bi bi-telegram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                               <!-- Quick Links Section -->
+<div class="col-lg-4 col-md-6">
+    <div class="footer-widget">
+        <h3 class="h5 mb-4">Quick Links</h3>
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="index.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Live Stock
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="market-analysis.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Market Analysis
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="investment-calculator.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Calculator
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="price-alerts.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Price Alerts
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="news.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Market News
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="faq.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> FAQs
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="about.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> About Us
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="contact.html" class="text-decoration-none">
+                            <i class="bi bi-chevron-right"></i> Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- Legal Section -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <h3 class="h5 mb-4">Legal & Info</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="disclaimer.html" class="text-decoration-none">
+                                        <i class="bi bi-shield-check"></i> Disclaimer
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="privacy.html" class="text-decoration-none">
+                                        <i class="bi bi-lock"></i> Privacy Policy
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="terms.html" class="text-decoration-none">
+                                        <i class="bi bi-file-text"></i> Terms of Service
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="dmca.html" class="text-decoration-none">
+                                        <i class="bi bi-copyright"></i> DMCA Notice
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom py-3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">&copy; 2024 Gujarat Stock Live. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Calculator Logic -->
+    <script>
+        document.getElementById('investmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const initialInvestment = parseFloat(document.getElementById('initialInvestment').value);
+            const monthlyInvestment = parseFloat(document.getElementById('monthlyInvestment').value);
+            const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
+            const investmentPeriod = parseInt(document.getElementById('investmentPeriod').value);
+
+            // Calculate results
+            const monthlyRate = expectedReturn / 1200; // Convert annual rate to monthly
+            const months = investmentPeriod * 12;
+            
+            // Calculate future value
+            const futureValue = initialInvestment * Math.pow(1 + monthlyRate, months) +
+                              monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+            
+            // Calculate total investment
+            const totalInvestment = initialInvestment + (monthlyInvestment * months);
+            
+            // Calculate returns
+            const totalReturns = futureValue - totalInvestment;
+            const absoluteReturns = ((futureValue - totalInvestment) / totalInvestment) * 100;
+
+            // Display results
+            document.getElementById('initialMessage').classList.add('d-none');
+            document.getElementById('results').classList.remove('d-none');
+            
+            document.getElementById('totalValue').textContent = '₹' + futureValue.toFixed(2);
+            document.getElementById('totalInvestment').textContent = '₹' + totalInvestment.toFixed(2);
+            document.getElementById('totalReturns').textContent = '₹' + totalReturns.toFixed(2);
+            document.getElementById('absoluteReturns').textContent = absoluteReturns.toFixed(2) + '%';
+        });
+    </script>
+</body>
+</html> 
