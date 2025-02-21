@@ -1201,4 +1201,18 @@ h1 {
     .education-section p {
         font-size: 0.9rem;
     }
+}
+
+/* Update text colors for better contrast */
+.text-muted {
+    color: #6c757d !important; /* Darker gray for better contrast */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.9); /* Darker text for better contrast */
+}
+
+/* Add more contrast to links */
+a {
+    color: #0056b3; /* Darker blue for better contrast */
 } 
